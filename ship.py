@@ -5,19 +5,20 @@ Game Warship file
 # -*- coding: utf-8 -*-
 
 import pygame
+from pygame.sprite import Sprite 
 
 # define the war ship class
-class Ship():
+class Ship(Sprite):
 
     #War ship init
-    def __init__(self, ai_setting, screen):
-        super().__init__()
+    def __init__(self, ai_settings, screen):
+        super(Ship, self).__init__()
 
         #init the ship position
         self.screen = screen
         
         #init the ship configration
-        self.ai_setting = ai_setting
+        self.ai_settings = ai_settings
         
         self.moving_left = False
         self.moving_right = False
@@ -40,8 +41,12 @@ class Ship():
 
         #update the ship position
         if self.moving_left and self.rect.left > 0 :
-            self.rect.centerx -= self.ai_setting.ship_speed_factor
+            self.rect.centerx -= self.ai_settings.ship_speed_factor
 
         if self.moving_right and self.rect.right < self.screen_rect.right :
-            self.rect.centerx += self.ai_setting.ship_speed_factor
+            self.rect.centerx += self.ai_settings.ship_speed_factor
+
+    def center_ship(self):
+
+        self.center = self.screen_rect.centerx
 

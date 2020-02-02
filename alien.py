@@ -11,11 +11,11 @@ from pygame.sprite import Sprite
 class Alien(Sprite):
 
     #Alien init
-    def __init__(self, ai_setting, screen):
+    def __init__(self, ai_settings, screen):
         super(Alien, self).__init__()
 
         self.screen = screen
-        self.ai_setting = ai_setting
+        self.ai_settings = ai_settings
 
         #load alien image
         self.image = pygame.image.load('images/alien.png')
@@ -39,6 +39,6 @@ class Alien(Sprite):
 
     def update(self):
         
-        delta = (self.ai_setting.alien_speed_factor * self.ai_setting.fleet_direction)
+        delta = (self.ai_settings.alien_speed_factor * self.ai_settings.fleet_direction)
         self.rect.x += delta 
 
